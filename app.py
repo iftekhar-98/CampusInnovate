@@ -6,7 +6,7 @@ from PIL.ExifTags import TAGS, GPSTAGS
 st.title("📍 CampusInnovate: OneMap PoC")
 
 # 1. إدخال التوكن (للخصوصية يفضل وضعه في Secrets)
-token = st.text_input("Enter OneMap Access Token", type="password")
+token = st.secrets["ONEMAP_TOKEN"]
 
 # 2. رفع الصورة
 uploaded_file = st.file_uploader("Upload a campus incident photo", type=['jpg', 'jpeg', 'png'])
