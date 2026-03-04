@@ -6,8 +6,8 @@ from PIL import Image
 
 # إعداد الصفحة
 st.set_page_config(page_title="CampusInnovate - Map Pick", page_icon="📍")
-st.title("📍 CampusInnovate: Signal Intake")
-st.write("ارفع صورة المشكلة وحدد موقعها بدقة على الخريطة.")
+st.title(" CampusInnovate")
+st.write("Upload a photo of the issue and mark its exact location on the map. 📍.")
 
 # 1. استدعاء التوكن من الـ Secrets
 try:
@@ -25,7 +25,7 @@ st.divider()
 
 # 3. اختيار الموقع على الخريطة (Interactive Map)
 st.subheader("2. Select Location on Map")
-st.info("اضغطي على الخريطة في مكان المشكلة لوضع علامة (Pin).")
+st.info("Tap on the map at the location of the issue to place a pin. 📍.")
 
 # إحداثيات مركز NUS الافتراضية
 nus_center = [1.2966, 103.7764]
@@ -48,7 +48,7 @@ if output and output.get("last_clicked"):
     headers = {"Authorization": f"Bearer {token}"}
     url = f"https://www.onemap.gov.sg/api/common/reverseGeocode?location={lat},{lon}&buffer=20&addressType=All"
     
-    with st.spinner("جاري تحديد اسم المبنى..."):
+    with st.spinner("Determining the building name.."):
         response = requests.get(url, headers=headers)
         
         if response.status_code == 200:
@@ -64,6 +64,6 @@ if output and output.get("last_clicked"):
                     st.balloons()
                     st.success("Report submitted to UCI Governance Layer!")
             else:
-                st.warning("لم يتم العثور على مبنى في هذه النقطة، يرجى المحاولة مرة أخرى.")
+                st.warning("No building was found at this location. Please try again..")
         else:
-            st.error(f"OneMap Error: {response.status_code}. يرجى التحقق من التوكن.")
+            st.error(f"OneMap Error: {response.status_code}. Please try again...")
