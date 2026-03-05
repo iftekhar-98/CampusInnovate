@@ -3,3 +3,4 @@ requests
 Pillow
 folium
 streamlit-folium
+pandas
