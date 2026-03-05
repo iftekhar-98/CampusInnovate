@@ -4,3 +4,4 @@ Pillow
 folium
 streamlit-folium
 pandas
+google-generativeai
